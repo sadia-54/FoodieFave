@@ -1,3 +1,42 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+/* Include Tailwind's Base styles */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Global styles */
+* {
+  @apply p-0 m-0 box-border;
+  /* Tailwind utility for padding, margin, and box-sizing */
+  font-family: 'Outfit', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply min-h-screen;
+  /* Tailwind utility for full height */
+}
+
+/* Override default anchor tag behavior */
+a {
+  @apply no-underline text-inherit;
+}
+
+/* Custom App class */
+.app {
+  @apply w-4/5 mx-auto;
+  /* Tailwind utility for width and margin */
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
