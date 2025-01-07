@@ -4,12 +4,12 @@ import { menu_list } from '@assets/assets';
 const ExploreMenu = ({ category, setCategory }) => {
 
   return (
-    <div className="explore-menu flex flex-col gap-5">
-      <h1 className="text-tomato font-medium">Explore Our Menu</h1>
-      <p className="explore-menu-text max-w-60 text-gray-500">
+    <div className="explore-menu flex flex-col gap-[20px]">
+      <h1 className="text-[tomato] font-medium text-3xl">Explore Our Menu</h1>
+      <p className="explore-menu-text max-w-[60%] text-gray-500">
         Start your meal with our range of delicious appetizers, from fresh salads to spicy hot delights, perfect to kick off your dining experience.
       </p>
-      <div className="explore-menu-list flex justify-between items-center gap-8 overflow-x-scroll my-5">
+      <div className="explore-menu-list flex justify-between items-center gap-[30px] text-center overflow-x-scroll my-5 mx-0">
         {menu_list.map((item, index) => {
           return (
             <div 
