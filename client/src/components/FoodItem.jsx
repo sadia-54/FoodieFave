@@ -7,28 +7,28 @@ const FoodItem = ({id, name, price, description, image}) => {
     const {cartItems, addToCart, removeFromCart} = useContext(StoreContext);
 
     return (
-        <div className='food-item flex flex-col items-center'>
+        <div className='w-full m-auto rounded-[15px] shadow-[0px_0px_10px_black] transition-all duration-400 animate-[fadeIn_1.2s]'>
             <div className="food-item-image-container relative">
-                <img className="food-item-image w-full h-full object-cover rounded-lg" src={image} alt="" />
+                <img className="w-full rounded-[15px_15px_0px_0px]" src={image} alt="" />
                 {
                     !cartItems[id]
-                    ? <img className='absolute top-2 right-2 cursor-pointer' onClick={()=> addToCart(id)} src={assets.add_icon_white} alt="Add Icon" />
-                    : <div className="food-item-counter flex items-center justify-center absolute top-2 right-2 bg-white rounded-lg p-2">
+                    ? <img className='absolute w-[35px] bottom-[15px] right-[15px] cursor-pointer rounded-[50%]' onClick={()=> addToCart(id)} src={assets.add_icon_white} alt="Add Icon" />
+                    : <div className="absolute bottom-[15px] right-[15px] flex items-center gap-[10px] p-[6px] rounded-[50px] bg-white">
                         <img onClick={()=> removeFromCart(id)} className="cursor-pointer mr-2" src={assets.remove_icon_red} alt="Remove Icon" />
                         <p className="mr-2">{cartItems[id]}</p>
                         <img onClick={()=> addToCart(id)} className="cursor-pointer" src={assets.add_icon_green} alt="Add Icon" />
                     </div>
                 }
             </div>
-            <div className="food-item-info mt-4 text-center">
-                <div className="food-item-name-rating mb-2">
-                    <p className="text-xl font-semibold">{name}</p>
-                    <img className="mx-auto" src={assets.rating_starts} alt="Rating Stars" />
+            <div className="food-item-info p-[20px]">
+                <div className="flex justify-between items-center mb-[10px]">
+                    <p className="text-[tomato] text-[20px] font-medium">{name}</p>
+                    <img className="w-[70px]" src={assets.rating_starts} alt="Rating Stars" />
                 </div>
-                <p className="food-item-description text-gray-500 mb-2">
+                <p className="food-item-description text-[lightslategrey] text-[15px]">
                     {description}
                 </p>
-                <p className="food-item-price text-lg font-bold text-tomato">
+                <p className="food-item-price text-[20px] font-medium text-[tomato] my-[10px]">
                     TK. {price}
                 </p>
             </div>
