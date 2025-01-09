@@ -3,7 +3,7 @@ import { assets } from '@assets/assets';
 
 const AppDownload = () => {
   return (
-    <div className="text-center font-medium text-[tomato] mt-[100px] text-[2.3vw] sm:text-[20px]">
+    <div className="text-center font-medium text-[tomato] mt-[100px] text-[2.3vw] sm:text-[20px]" id='app-download'>
       <p>
         For Better User Experience Download Our <br /> FoodieFave App
       </p>

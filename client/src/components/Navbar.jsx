@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { assets } from '@assets/assets';
 import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({setShowLogin}) => {
   const [menu, setMenu] = useState('menu');
 
   return (
@@ -16,7 +16,7 @@ const Navbar = () => {
 
       {/* Navbar Menu */}
       <ul className="hidden lg:flex gap-5 text-[tomato] text-[18px] list-none">
-        <Link 
+        <Link to='/'
           onClick={() => setMenu('home')} 
           className={`${menu === 'home' ? 'pb-[2px] border-b-[2px] border-lightslategray' : ''}`}
         >
@@ -52,7 +52,8 @@ const Navbar = () => {
           <img src={assets.basket_icon} alt="" className="w-[20px] lg:w-[22px]" />
           <div className="absolute w-[10px] h-[10px] bg-[tomato] rounded-full -top-[8px] -right-[1px]"></div>
         </div>
-        <button className="bg-transparent text-[tomato] border border-[tomato] px-[30px] py-[10px] rounded-full cursor-pointer transition duration-300 hover:bg-[rgb(244,225,230)]">
+        <button onClick= {()=>setShowLogin(true)} 
+           className="bg-transparent text-[tomato] border border-[tomato] px-[30px] py-[10px] rounded-full cursor-pointer transition duration-300 hover:bg-[rgb(244,225,230)]">
           Sign In
         </button>
       </div>

@@ -4,7 +4,7 @@ import { menu_list } from '@assets/assets';
 const ExploreMenu = ({ category, setCategory }) => {
 
   return (
-    <div className="explore-menu flex flex-col gap-[20px]">
+    <div className="explore-menu flex flex-col gap-[20px]" id = "explore-menu">
       <h1 className="text-[tomato] font-medium text-3xl">Explore Our Menu</h1>
       <p className="explore-menu-text max-w-[60%] text-gray-500">
         Start your meal with our range of delicious appetizers, from fresh salads to spicy hot delights, perfect to kick off your dining experience.
