@@ -53,12 +53,12 @@ const Cart = () => {
               <hr className='my-[10 px]' />
               <div className="cart-total-details flex justify-between text-[#555]">
                 <p>Delivery Fee</p>
-                <p>TK. {25}</p>
+                <p>TK. {getTotalCartAmount()===0?0:25}</p>
               </div>
               <hr />
               <div className="cart-total-details flex justify-between text-[#555]">
                 <b>Total</b>
-                <b>TK. {getTotalCartAmount()+25}</b>
+                <b>TK. {getTotalCartAmount()===0?0:25+getTotalCartAmount()}</b>
               </div>
             </div>
             <button onClick={()=>navigate('/order')} className='text-white bg-[tomato] w-[max(15vw, 200px)] py-[12 px] rounded-[4 px] cursor-pointer'>Proceed To Checkout</button>
