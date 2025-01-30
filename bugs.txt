@@ -1,0 +1,4 @@
+1. frontend part not fully responsive
+2. frontend design issues
+3. admin panel design is not according to the tutorial, fix the problem
+4. vite tailwind issue in admin panel
