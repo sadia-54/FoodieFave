@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { assets } from '../assets/assets';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const Add = () => {
   const url = 'http://localhost:4000';
@@ -32,7 +33,6 @@ const Add = () => {
       const response = await axios.post(`${url}/api/food/add`, formData);
 
       if (response.data.success) {
-        alert('Data added successfully');
         setData({
           name: '',
           description: '',
@@ -40,21 +40,12 @@ const Add = () => {
           category: 'Salad',
         });
         setImage(false);
+        toast.success(response.data.message)
       } else {
-        alert('Something went wrong!');
+        toast.error(response.data.message)
       }
     } catch (error) {
       console.error('Error:', error);
-      if (error.response) {
-        console.error('Server Response:', error.response.data);
-        alert(`Error: ${error.response.data.message || 'Bad Request'}`);
-      } else if (error.request) {
-        console.error('No response received:', error.request);
-        alert('No response from server. Please try again.');
-      } else {
-        console.error('Request error:', error.message);
-        alert('An error occurred. Please try again.');
-      }
     }
   };
 
