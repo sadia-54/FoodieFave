@@ -1,23 +1,65 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import { assets } from '@assets/assets'
+import { StoreContext } from '../context/StoreContext.jsx'
+import axios from 'axios'
 
 const LoginModal = ({setShowLogin}) => {
 
+    const {url, setToken} = useContext(StoreContext)
     const [currentState, setCurrentState] = useState('Login')
+    const [data, setData] = useState({
+      name: "", 
+      email: "",
+      password: ""
+    })
+
+    const onChangeHandler = (event) => { 
+      const name = event.target.name
+      const value = event.target.value
+      setData({...data, [name]: value})
+    }
+
+    // to check updated data in browser console from input fields
+    // useEffect(()=>{
+    //   console.log(data); 
+    // }, [data])
+
+    const onLogin = async (event) => {
+
+      event.preventDefault()
+      let newUrl = url
+      if(currentState==='Login'){
+        newUrl += '/api/user/login'
+      }
+      else{
+        newUrl += '/api/user/register'
+      }
+      const response = await axios.post(newUrl, data)
+
+      if(response.data.success){
+        setToken(response.data.token)
+        localStorage.setItem("token", response.data.token)
+        setShowLogin(false)
+      }
+      else{
+        alert(response.data.message)
+      }
+    }
 
   return (
     <div className='login-modal absolute z-[1] w-full h-full bg-[#00000090] grid' >
-        <form className='login-modal-container place-self-center w-[max(23vw, 330px)] text-[#808080] bg-white flex flex-col gap-[25px] py-[25px] px-[30px] rounded-[8px] text-sm' >
+        <form onSubmit={onLogin} className='login-modal-container place-self-center w-[max(23vw, 330px)] text-[#808080] bg-white flex flex-col gap-[25px] py-[25px] px-[30px] rounded-[8px] text-sm' >
             <div className="login-modal-title text-[tomato] font-semibold flex flex-row justify-between items-center">
                 <h2>{currentState}</h2>
                 <img onClick={()=> setShowLogin(false) } src={assets.cross_icon} alt="" className='w-[16px] cursor-pointer' />
             </div>
             <div className="login-modal-input flex flex-col gap-[10px]">
-              {currentState==="Login"?<></>:<input type="text" placeholder='Your Name' required class="border border-gray-300 rounded px-4 py-2"/>}
-              <input type="email" placeholder='Your Email' required className="border border-gray-300 rounded px-4 py-2"/>
-              <input type="password" placeholder='Password' required className="border border-gray-300 rounded px-4 py-2"/>
+              {currentState==="Login"?<></>
+              :<input name='name' onChange={onChangeHandler} value={data.name} type="text" placeholder='Your Name' required className="border border-gray-300 rounded px-4 py-2"/>}
+              <input name='email' onChange={onChangeHandler} value={data.email} type="email" placeholder='Your Email' required className="border border-gray-300 rounded px-4 py-2"/>
+              <input name='password' onChange={onChangeHandler} value={data.password} type="password" placeholder='Password' required className="border border-gray-300 rounded px-4 py-2"/>
             </div>
-            <button className="border border-gray-300 rounded px-4 py-2 bg-[tomato] text-white">{currentState==="Sign Up"?"Create account":"Login"}</button>
+            <button type='submit' className="border border-gray-300 rounded px-4 py-2 bg-[tomato] text-white">{currentState==="Sign Up"?"Create account":"Login"}</button>
             <div className="login-modal-condition flex items-start gap-[8px] mt-[-8px]">
               <input type="checkbox" required className='mt-[5px] cursor-pointer' />
               <p>By continuing, I agree to the terms of use & privacy policy.</p>
