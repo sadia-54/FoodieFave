@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useContext } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useContext, useNavigate } from 'react'
 import { StoreContext } from '../context/StoreContext.jsx';
 import axios from 'axios';
 
@@ -53,6 +53,19 @@ const PlaceOrder = () => {
       alert("Error")
     }
   }
+
+  const navigate = useNavigate()
+
+  useEffect(()=>{
+    if(!token){
+      navigate('/cart')
+    }
+    else if(getTotalCartAmount()===0){
+      navigate('/cart')
+
+    }
+
+  }, [token])
 
   return (
     <form onSubmit={placeOrder} className='place-order flex items-start justify-between gap-[50px] mt-[100px]'>

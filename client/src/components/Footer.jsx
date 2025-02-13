@@ -27,7 +27,7 @@ const Footer = () => {
         <div className="flex flex-col items-start gap-[20px]">
           <h2 className="text-tomato">GET IN TOUCH</h2>
           <ul className="list-none space-y-2">
-            <li>+8801792530122</li>
+            <li>+8801799999999</li>
             <li>foodiefave@gmail.com</li>
           </ul>
         </div>
