@@ -3,3 +3,4 @@
 3. admin panel design is not according to the tutorial, fix the problem
 4. vite tailwind issue in admin panel
 5. add and list item css issues
+6. place order useNavigate issues

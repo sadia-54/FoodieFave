@@ -41,6 +41,30 @@ const StoreContextProvider = (props) => {
     }
     return totalAmount;
    }
+   
+// const getTotalCartAmount = () => {
+//     let totalAmount = 0;
+//     // Create a copy of cartItems to avoid mutating the state directly
+//     let updatedCartItems = {...cartItems};
+
+//     for (const item in updatedCartItems) {
+//         if (updatedCartItems[item] > 0) {
+//             // Find the item in the food_list
+//             let itemInfo = food_list.find((product) => product._id === item);
+            
+//             if (itemInfo) {
+//                 // If item exists in food_list, calculate the total
+//                 totalAmount += itemInfo.price * updatedCartItems[item];
+//             } else {
+//                 // If item doesn't exist, remove it from the cart
+//                 delete updatedCartItems[item];
+//                 setCartItems(updatedCartItems); // Update cartItems state
+//             }
+//         }
+//     }
+//     return totalAmount;
+// }
+
 
    useEffect(()=>{
        async function loadData() {

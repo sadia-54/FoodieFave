@@ -54,18 +54,18 @@ const PlaceOrder = () => {
     }
   }
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
-  useEffect(()=>{
-    if(!token){
-      navigate('/cart')
-    }
-    else if(getTotalCartAmount()===0){
-      navigate('/cart')
+  // useEffect(()=>{
+  //   if(!token){
+  //     navigate('/cart')
+  //   }
+  //   else if(getTotalCartAmount()===0){
+  //     navigate('/cart')
 
-    }
+  //   }
 
-  }, [token])
+  // }, [token])
 
   return (
     <form onSubmit={placeOrder} className='place-order flex items-start justify-between gap-[50px] mt-[100px]'>

@@ -73,7 +73,7 @@ const Navbar = ({setShowLogin}) => {
         <div className="navbar-profile relative group">
           <img src={assets.profile_icon} alt="" className='cursor-pointer'/>
           <ul className="nav-profile-dropdown absolute hidden right-0 z-10 group-hover:flex flex-col gap-[10px] bg-[#fff2ef] py-[12px] px-[25px] rounded-[4px] border border-solid border-[1px] border-[tomato] outline-2 outline-white list-none ">
-            <li className='flex items-center gap-[10px] cursor-pointer hover:text-[tomato]'>
+            <li onClick={()=>navigate('/myorders')} className='flex items-center gap-[10px] cursor-pointer hover:text-[tomato]'>
               <img className='w-[20px]' src={assets.bag_icon} alt="" />
               <p>Orders</p>
             </li>

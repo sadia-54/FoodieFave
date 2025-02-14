@@ -1,6 +1,6 @@
 import orderModel from '../models/orderModel.js'
 import userModel from '../models/userModel.js'
-// import bkash payment
+
 
 // const bkash = new bka
 
@@ -78,4 +78,18 @@ const userOrders = async (req, res) => {
     }
 }
 
-export {placeOrder, verifyOrder, userOrders}
+// listing orders for the admin
+const listOrders = async (req, res) => {
+
+    try{
+        const orders = await orderModel.find({})
+        res.json({success: true, data: orders})
+
+    } catch(error){
+        console.log(error)
+        res.json({success: false, message: "Error"})
+    }
+}
+
+export {placeOrder, verifyOrder, userOrders, listOrders}
+
