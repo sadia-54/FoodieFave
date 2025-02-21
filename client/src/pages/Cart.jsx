@@ -6,6 +6,7 @@ const Cart = () => {
 
   const {cartItems, food_list, removeFromCart, getTotalCartAmount, url} = useContext(StoreContext);
 
+  const isFormValid = getTotalCartAmount() > 0;
   const navigate = useNavigate();
 
   return (
@@ -27,7 +28,7 @@ const Cart = () => {
              if(cartItems[item._id]>0)
              {
               return(
-                 <div>
+                 <div key={item._id}>
                  <div className="cart-items-title cart-items-item my-[10px] text-black items-center text-gray-500 text-[max(1vw, 12px)] grid grid-cols-[1fr_1.5fr_1fr_1fr_1fr_0.5fr] gap-4">
                   <img className='w-[50px]' src={url+"/images/"+item.image} alt="" />
                   <p>{item.name}</p>
@@ -61,7 +62,7 @@ const Cart = () => {
                 <b>TK. {getTotalCartAmount()===0?0:25+getTotalCartAmount()}</b>
               </div>
             </div>
-            <button onClick={()=>navigate('/order')} className='text-white bg-[tomato] w-[max(15vw, 200px)] py-[12 px] rounded-[4 px] cursor-pointer'>Proceed To Checkout</button>
+            <button disabled={!isFormValid} onClick={()=>navigate('/order')} className='text-white bg-[tomato] w-[max(15vw, 200px)] py-[12 px] rounded-[4 px] cursor-pointer'>Proceed To Checkout</button>
           </div>
           <div className="cart-promocode flex flex-1 justify-between max-[750px]:justify-start">
             <div>

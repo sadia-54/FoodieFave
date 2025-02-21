@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useContext, useNavigate } from 'react'
 import { StoreContext } from '../context/StoreContext.jsx';
+import PaymentModal from '../components/PaymentModal.jsx';
 import axios from 'axios';
 
 const PlaceOrder = () => {
+
+  const [isOpen, setIsOpen] = useState(false)
+
 
   const {getTotalCartAmount, token, food_list, cartItems, url} = useContext(StoreContext)
   const [data, setData] = useState({
@@ -17,6 +21,7 @@ const PlaceOrder = () => {
     country: "",
     phone: ""
   })
+  const isFormValid = Object.values(data).every(field => field.trim() !== "") && getTotalCartAmount() > 0;
 
   const onChangeHandler = (event) => {
     const name = event.target.name
@@ -106,7 +111,10 @@ const PlaceOrder = () => {
                 <b>TK. {getTotalCartAmount()===0?0:25+getTotalCartAmount()}</b>
               </div>
             </div>
-            <button type='submit' className='text-white bg-[tomato] w-[max(15vw, 200px)] py-[12 px] rounded-[4 px] cursor-pointer mt-[30px]'>Proceed To Payment</button>
+            <button onClick={()=> setIsOpen(true)} type='submit' className='text-white bg-[tomato] w-[max(15vw, 200px)] py-[12 px] rounded-[4 px] cursor-pointer mt-[30px]'
+               disabled={!isFormValid}>Proceed To Payment</button>
+
+            <PaymentModal isOpen={isOpen} onClose={()=> setIsOpen(false)} />
           </div>
       </div>
     </form>

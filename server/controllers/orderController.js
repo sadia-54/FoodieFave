@@ -4,6 +4,8 @@ import userModel from '../models/userModel.js'
 
 // const bkash = new bka
 
+const frontend_url = "http://localhost:5173"
+
 // placing user order for frontend
 const placeOrder = async (req, res) => {
 
@@ -42,6 +44,8 @@ const placeOrder = async (req, res) => {
 
     }
     catch(error){
+        console.log(error)
+        res.json({success: false, message: 'Error'})
 
     }
 
