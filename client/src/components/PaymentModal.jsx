@@ -2,10 +2,13 @@ import React from 'react'
 import { useState } from 'react';
 import { useContext } from 'react';
 import {StoreContext} from '../context/StoreContext';
+import { useNavigate } from 'react-router-dom';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 
 const PaymentModal = ({isOpen, onClose}) => {
+
+    const navigate = useNavigate();
 
     const [searchParams, setSearchParams] = useSearchParams()
 
@@ -38,7 +41,8 @@ const PaymentModal = ({isOpen, onClose}) => {
             {cardNumber,
              expiry, 
              cvv, 
-             amount
+             amount,
+             orderId
             })
 
             setMessage(response.data.message)

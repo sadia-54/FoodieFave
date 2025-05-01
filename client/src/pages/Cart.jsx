@@ -66,8 +66,8 @@ const Cart = () => {
           </div>
           <div className="cart-promocode flex flex-1 justify-between max-[750px]:justify-start">
             <div>
-              <p className='text-[#555]'>If you have a promo code, Enter it here</p>
-              <div className="cart-promocode-input mt-[10 px] flex justify-between items-center bg-[#eaeaea] rounded-[4 px] ">
+              <p className='text-[#555] ml-5'>If you have a promo code, Enter it here</p>
+              <div className="cart-promocode-input mt-[10 px] flex justify-between items-center bg-[#eaeaea] rounded-[4 px] ml-5">
                 <input type="text" placeholder='promo code' className='bg-transparent outline-none pl-[10px]' />
                 <button className='w-[max(10vw, 150px)] py-[12px] px-[5px] bg-black text-white rounded-[4px] '>Submit</button>
               </div>
