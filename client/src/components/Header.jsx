@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <div className="h-[34vw] my-[30px] mx-auto bg-[url('/header-img.png')] bg-no-repeat bg-center bg-cover relative rounded-lg">
       <div className="absolute flex flex-col items-start gap-[1.5vw] max-w-[50%] bottom-[10%] left-[6vw] animate-fadeIn">
-        <h2 className="font-medium text-white text-[max(4.5vw,22px)] leading-tight">
+        <h2 className="text-white font-semibold text-[18px] sm:text-[22px] md:text-[26px] lg:text-[30px] xl:text-[36px] leading-tight">
           Hungry? Order Your Favourite Food Here!
         </h2>
         <p className="text-white text-[1vw] hidden md:block">

@@ -37,11 +37,19 @@ const PaymentModal = ({isOpen, onClose}) => {
 
     // Simulate a payment request
     try {
+        console.log("Sending Payment Info:", {
+            cardNumber,
+            expiry,
+            cvv,
+            amount,
+            orderId
+          });
+          
         const response = await axios.post(url+"/api/payments/payment", 
             {cardNumber,
              expiry, 
              cvv, 
-             amount,
+             amount: Number(amount),
              orderId
             })
 

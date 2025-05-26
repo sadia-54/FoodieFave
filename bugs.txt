@@ -1,2 +1,0 @@
-1. frontend part not fully responsive
-2. frontend design issues

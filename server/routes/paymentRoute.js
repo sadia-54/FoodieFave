@@ -5,19 +5,25 @@ import { v4 as uuidv4 } from "uuid";
 
 const paymentRouter = express.Router();
 
+
 // Dummy Payment Processing Route
 paymentRouter.post("/payment", async (req, res) => {
     try {
+        console.log("Received Payment Body:", req.body);
         console.log(req.body)
 
         const { cardNumber, expiry, cvv, amount, orderId } = req.body;
 
         if (!orderId) {
+            console.log("Validation Error: Missing orderId");
             return res.status(400).json({ message: "Order ID is required!" });
         }
 
         // Basic validation
         if (!cardNumber || !expiry || !cvv || !amount || !orderId) {
+            console.log("Validation Error: One or more fields missing", {
+                cardNumber, expiry, cvv, amount, orderId
+            });
             return res.status(400).json({ message: "All fields are required!" });
         }
         if (cardNumber.length !== 16 || expiry.length !== 5 || cvv.length !== 3) {
