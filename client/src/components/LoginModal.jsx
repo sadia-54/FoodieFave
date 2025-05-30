@@ -34,6 +34,8 @@ const LoginModal = ({setShowLogin}) => {
       else{
         newUrl += '/api/user/register'
       }
+
+      try {
       const response = await axios.post(newUrl, data)
 
       if(response.data.success){
@@ -44,6 +46,10 @@ const LoginModal = ({setShowLogin}) => {
       else{
         alert(response.data.message)
       }
+    } catch (error) {
+      console.error("Registration/Login failed:", error);
+      alert(error.response?.data?.message || "Server error occurred.");
+    }
     }
 
   return (
